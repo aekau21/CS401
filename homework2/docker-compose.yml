@@ -1,0 +1,25 @@
+version: '3'
+
+services:
+  writer:
+    build:
+      context: .
+      dockerfile: Dockerfile-writer
+    volumes:
+      - ./data:/code/data
+
+  computer:
+    build:
+      context: .
+      dockerfile: Dockerfile-computer
+    volumes:
+      - ./data:/code/data
+
+  webserver:
+    build:
+      context: .
+      dockerfile: Dockerfile-website
+    ports:
+      - "8000:8000"
+    volumes:
+      - .:/code
