@@ -5,21 +5,16 @@ services:
     build:
       context: .
       dockerfile: Dockerfile-writer
+    image: aekau21/writer
     volumes:
-      - ./data:/code/data
+      - ./data:/data
+    command: writer.py /data/data.txt
 
   computer:
     build:
       context: .
       dockerfile: Dockerfile-computer
+    image: aekau21/computer
     volumes:
-      - ./data:/code/data
-
-  webserver:
-    build:
-      context: .
-      dockerfile: Dockerfile-website
-    ports:
-      - "8000:8000"
-    volumes:
-      - .:/code
+      - ./data:/data
+    command: computer.py /data/data.txt /data/results.txt
