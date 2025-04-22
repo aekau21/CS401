@@ -1,7 +1,20 @@
 # Homework 3
 
-This project contains a Python script that analyzes movie data from a JSON file. The script supports command-line interaction and includes three core functions for extracting insights.
+#Build and Setup
 
+Set up virtual enviroment in terminal :
+python3 -m venv imdb
+
+Load virtual enviroement:
+source imdb/bin/activate # mac/linux
+imdb\Scripts\activate # Windows
+
+Make sure requirments is installed: 
+pip install -r requirements.txt
+
+Make sure pytest is installed
+
+This project contains a Python script that analyzes movie data from a JSON file. The script supports command-line interaction and includes three core functions for extracting insights.
 
 
 Function 1: Net Profit
@@ -27,8 +40,13 @@ Searches for movies directed by a specific person.
 Performs a case-insensitive match on the directors field.
 Returns a list of movie titles directed by the given name.
 
-The analyze_data script containts the three custom functions listed above. 
+The analyze_data script contains the three custom functions listed above. 
 
 The test_analyze_data.py script then tests the functions to ensure they are working correctly. 
 
 To test the apps, run pytest in terminal. 
+
+
+docker build -t movie-analyzer -f dockerfile
+
+docker run --rm -p 5000:5000 movie-analyzer
