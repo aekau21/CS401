@@ -35,11 +35,33 @@ def net_profit(data):
 
     
     
-    # TODO: movie with the largest net profit of the past 5 years
-    
+# TODO: movie with the largest net profit of the past 5 years COMPLETE
+
+def most_expensive_movie(data):
+    max_budget = 0
+    movie_title = ""
+
+    for movie in data:
+        budget = movie.get("budget", "")
+        if budget != "" and budget > max_budget:
+            max_budget = budget
+            movie_title = movie["Title"]
+
+    return(movie_title, max_budget)
+
 
 # TODO: add second function to print out interesting statistics about the data
 
+def director_films(data, director_name):
+    movies = []
+
+    for i in data:
+        director = i.get("directors", "")  # Safely get the director field
+        title = i.get("Title", "")
+        if director and director.lower() == director_name.lower():
+            movies.append(title)
+
+    return movies
 
 # TODO: add third function to print out interesting statistics about the data
 
@@ -65,8 +87,13 @@ def main():
 
     # TODO: second function to return and print out 
 
+    expensive_movie, budget = most_expensive_movie(data)
+    print(f'Most expensive movie: {expensive_movie} with a budget of ${budget:,}')
+
     # TODO: third function to return and print out result
 
+    films = director_films(data, director_name)
+    print(f"Movies by Director: {films}")
 
 if __name__ == '__main__':
     main()
